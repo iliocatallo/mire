@@ -1,0 +1,31 @@
+{
+  "author": "Ilio Catallo <info@iliocatallo.it>",
+  "name": "mire",
+  "version": "1.0.0",
+  "description": "Generic functions in JavaScript",
+  "homepage": "https://github.com/iliocatallo/mire#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iliocatallo/mire.git"
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "nyc --reporter=lcov --reporter=text mocha --recursive --reporter spec",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "jsdoc": "jsdoc -r -c jsdoc.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "jsdoc": "^3.5.5",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0"
+  }
+}

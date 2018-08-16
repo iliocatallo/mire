@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- lts/*
+- '9'
+- '10'
+after_success: npm run coveralls
+deploy:
+  provider: npm
+  email: info@iliocatallo.it
+  api_key:
+    secure: PRkzBJuQfMiRyGW9dDS709aPocT6x9l423wlxwe2VYU9/NPVgJDKnTzGcqUyd+6y9jR7E9F18zzfG5AKXvAbNxONGe4mF98d3whRrQZhngPwYtF2fTAfRLP1XviTbImMO1/4Ska5cSCBN4zpSaqx1D1Ogs6/gHTmGX/ROLH09XqYxyZk9h19Xoabl4ngoFInjvkGxUVASVgdIu9oGkWBFF9s3op/iof8EfzQEz4+0WeXHCttl5Bto/g7luYzkDfUSoxhg/oEljViS/WCx2gcIyfrjX3go0yxkzDxJ622L01ZRXuKe+nc+YseMkva244rpI6RoU45aAv8eny1EsGdwWcWHGNDnarg3it7mN99cNEK+9E8hMx8xqTnDS34TYW5tSr4SfYZg9t7Xe94wvfLmQxgeflWh2ClqDQSuqxNSf10gempLbDXUYUsqEXH1JG/WhNKTdtx5245j/YoJCBbA04S/d9QB7qH2dzc59dVBBbKppeAtyI7oYDbjaH0eqr2s32hSCg4JfLIH3IPgOB+txWROkrqXJ1YLNVOs52qCRWjDpoJPHkEJdRK9jvCD7y1wawmxQ1tF7btmfuZydWFMjAhVxqBckscmM3n/SfTFOJfN87LF0FBzhMYlOHdff8GmOOx4AbSzsUkNaOelbiNk4tsYOsUYG63Frmni5r7ATc=
+  on:
+    tags: true
