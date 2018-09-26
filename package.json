@@ -9,6 +9,12 @@
     "type": "git",
     "url": "git://github.com/iliocatallo/mire.git"
   },
+  "keywords": [
+    "multimethods",
+    "generic functions",
+    "multiple dispatch",
+    "polymorphism"
+  ],
   "main": "index.js",
   "directories": {
     "lib": "lib"
