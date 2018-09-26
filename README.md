@@ -71,7 +71,7 @@ const sum = Generic.create({name: 'sum', arity: 2, defaultHandler: (x, y) => x +
 
 #### `Generic#of`
 
-Creates a generic function starting from a function. The new generic function will have the same name and arity as the input function. In other words, `Generic#of` promotes a function to a generic function in the same way `Array#of` promotes a single value to an array.
+Creates a generic function starting from a function. The new generic function has the same name and arity as the input function. In other words, `Generic#of` promotes a function to a generic function in the same way `Array#of` promotes a single value to an array.
 
 ```javascript
 const sum = Generic.of(function sum(x, y) {
