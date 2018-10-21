@@ -56,6 +56,13 @@ describe('[Trie] Getting a value', function () {
 
 describe('[Trie] Setting a value', function () {
 
+    it('should throw an Error if the first argument is not an array of predicates', function () {
+        const notAPred = 'not-a-pred';
+
+        const trie = new Trie();
+        expect(() => trie.setValue([notAPred], 'not-a-pred-value')).to.throw();
+    });
+
     it('should override previous values associated with the same predicates', function () {
         const pred1 = sinon.stub().returns(true);
         const pred2 = sinon.stub().returns(true);
