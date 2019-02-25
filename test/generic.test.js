@@ -62,7 +62,7 @@ describe('[Generic] Creating a generic function', function () {
 
     it('should be possible also when no parameters have been specified', function () {
         const add = Generic.create();
-        
+
         expect(add.name).to.equal('');
         expect(add.length).to.equal(0);
         expect(() => add(5, 6)).to.throw(Generic.NoMatchingError);
@@ -75,8 +75,8 @@ describe('[Generic] Applying a generic function to some arguments', function () 
         const arrayHandler = sinon.stub();
 
         const add = Generic.create();
-        add.addHandler([isNumber, isNumber], numberHandler);
-        add.addHandler([isArray, isArray], arrayHandler);
+        add.when([isNumber, isNumber], numberHandler);
+        add.when([isArray, isArray], arrayHandler);
 
         add(5, 6);
         add([4, 2], [7, 6]);
@@ -95,15 +95,15 @@ describe('[Generic] Applying a generic function to some arguments', function () 
     });
 });
 
-describe('[Generic] Adding a handler function', function () {
+describe('[Generic] Extendind a generic function', function () {
     it('should override least-recent handlers with the same predicates', function () {
         const handler1 = sinon.stub();
         const handler2 = sinon.stub();
 
         const add = Generic.create();
 
-        add.addHandler([isNumber, isNumber], handler1);
-        add.addHandler([isNumber, isNumber], handler2);
+        add.when([isNumber, isNumber], handler1);
+        add.when([isNumber, isNumber], handler2);
 
         add(5, 6);
 
