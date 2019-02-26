@@ -1,7 +1,7 @@
 {
   "author": "Ilio Catallo <info@iliocatallo.it>",
   "name": "mire",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generic functions in JavaScript",
   "homepage": "https://github.com/iliocatallo/mire#readme",
   "license": "MIT",
