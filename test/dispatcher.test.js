@@ -9,7 +9,7 @@ const chai          = require('chai'),
 
 chai.use(require('sinon-chai'));
 
-describe('[Dispatcher] Adding a handler function', function () {
+describe('[Dispatcher] Setting a handler function', function () {
     it('should be delegated to the underlying trie', function () {
         const trie = {
             setValue: sinon.stub()
@@ -18,7 +18,7 @@ describe('[Dispatcher] Adding a handler function', function () {
         const dispatcher = new Dispatcher();
         dispatcher._trie = trie;
 
-        dispatcher.addHandler(['pred1', 'pred2'], 'handler');
+        dispatcher.setHandler(['pred1', 'pred2'], 'handler');
         expect(trie.setValue).to.have.been.calledWith(['pred1', 'pred2'], 'handler');
     });
 });
