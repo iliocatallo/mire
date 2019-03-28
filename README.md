@@ -51,11 +51,13 @@ npm install mire
 
 ## Reference
 
-#### `Generic#create`
+#### `Generic.create`
 
 Creates a generic function by specifying its name, arity and default handler. All parameters are optional. In the absence of a specific indication, the new generic function falls back to a default handler that always throws a `NoMatchingError`.
 
 ```javascript
+const Generic = require('mire');
+
 // name: '', arity: 0, throwing handler
 const sum = Generic.create();
 
@@ -69,35 +71,47 @@ const sum = Generic.create({name: 'sum', arity: 2});
 const sum = Generic.create({name: 'sum', arity: 2, defaultHandler: (x, y) => x + y})
 ```
 
-#### `Generic#of`
+#### `Generic.of`
 
-Creates a generic function starting from a function. The new generic function has the same name and arity as the input function. In other words, `Generic#of` promotes a function to a generic function in the same way `Array#of` promotes a single value to an array.
+Creates a generic function starting from a function. The new generic function has the same name and arity as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way `Array.of` promotes a single value to an array.
 
 ```javascript
+const Generic = require('mire');
+
 const sum = Generic.of(function sum(x, y) {
     return x + y;
 });
 ```
 
-#### `GenericFunction#when` - `GenericFunction#addHandler`
+#### `GenericFunction.when` - `GenericFunction.addHandler`
 
 A generic function can be extended at any time in order to handle a new combination of argument types. This is achieved by specifying a handler function, together with the related dispatching predicates. Note that an existing handler may get overwritten by new handlers with the same predicates.
 
 ```javascript
+const Generic = require('mire'),
+      isArray = Array.isArray;
+
+const sum = Generic.of(function sum(x, y) {
+    return x + y;
+});
+
 sum.when([isArray, isArray], function sumArrays(xs, ys) {
     return xs.map((x, i) => x + ys[i]);
 });
 ```
 
-#### `NoMatchingError`
+#### `Generic.NoMatchingError`
 
-When no default handler is passed to `Generic#create`, Mire falls back to a default handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the arguments for which no matching was found.
+When no default handler is passed to `Generic.create`, Mire falls back to a default handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the arguments that did not match.
 
 ```javascript
+const Generic = require('mire');
+
 const sum = Generic.create();
 try {
     sum(5, 6);
 } catch (err) {
+    // err is an instance of Generic.NoMatchingError
     // err.generic points to sum
     // err.args is [5, 6]
 }
@@ -105,8 +119,4 @@ try {
 
 ## Acknowledgments
 
-The amazing Mire logo was created by [@adrygariglio](https://github.com/adrygariglio).
-
-Mire adapts to JavaScript the approach to generic functions presented in MIT 6.945. The library takes its name from a sentence in Problem Set 3:
-
-> If a system is built as a ball of mud it is easy to add more mud.
+The amazing Mire logo was created by [@adrygariglio](https://github.com/adrygariglio). Mire adapts to JavaScript the approach to generic functions presented in MIT 6.945.
