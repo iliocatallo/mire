@@ -95,7 +95,7 @@ describe('[Generic] Applying a generic function to some arguments', function () 
     });
 });
 
-describe('[Generic] Extendind a generic function', function () {
+describe('[Generic] Extending a generic function', function () {
     it('should override least-recent handlers with the same predicates', function () {
         const handler1 = sinon.stub();
         const handler2 = sinon.stub();
