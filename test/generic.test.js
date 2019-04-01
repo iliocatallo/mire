@@ -22,10 +22,10 @@ describe('[Generic] Creating a generic function', function () {
         expect(add.length).to.equal(2);
     });
 
-    it('should be possible by specifying its name, arity and default handler', function () {
+    it('should be possible by specifying its name, length and default handler', function () {
         const add = Generic.create({
             name: 'add',
-            arity: 2,
+            length: 2,
             defaultHandler: (x, y) => x + y
         });
 
@@ -35,14 +35,14 @@ describe('[Generic] Creating a generic function', function () {
 
     it('should be possible also when no name has been specified', function () {
         const add = Generic.create({
-            arity: 2,
+            length: 2,
             defaultHandler: (x, y) => x + y
         });
 
         expect(add.name).to.equal('');
     });
 
-    it('should be possible also when no arity has been specified', function () {
+    it('should be possible also when no length has been specified', function () {
         const add = Generic.create({
             name: 'add',
             defaultHandler: (x, y) => x + y
@@ -54,7 +54,7 @@ describe('[Generic] Creating a generic function', function () {
     it('should be possible also when no default handler has been specified', function () {
         const add = Generic.create({
             name: 'add',
-            arity: 2
+            length: 2
         });
 
         expect(() => add(5, 6)).to.throw(Generic.NoMatchingError);

@@ -53,27 +53,27 @@ npm install mire
 
 #### `Generic.create`
 
-Creates a generic function by specifying its name, arity and default handler. All parameters are optional. In the absence of a specific indication, the new generic function falls back to a default handler that always throws a `NoMatchingError`.
+Creates a generic function by specifying its name, length and default handler. All parameters are optional. In the absence of a specific indication, the new generic function falls back to a default handler that always throws a `NoMatchingError`.
 
 ```javascript
 const Generic = require('mire');
 
-// name: '', arity: 0, throwing handler
+// name: '', length: 0, throwing handler
 const sum = Generic.create();
 
-// name: 'sum', arity: 0, throwing handler
+// name: 'sum', length: 0, throwing handler
 const sum = Generic.create({name: 'sum'});
 
-// name: 'sum', arity: 2, throwing handler
-const sum = Generic.create({name: 'sum', arity: 2});
+// name: 'sum', length: 2, throwing handler
+const sum = Generic.create({name: 'sum', length: 2});
 
-// name: 'sum', arity: 2, explicit default handler
-const sum = Generic.create({name: 'sum', arity: 2, defaultHandler: (x, y) => x + y})
+// name: 'sum', length: 2, explicit default handler
+const sum = Generic.create({name: 'sum', length: 2, defaultHandler: (x, y) => x + y})
 ```
 
 #### `Generic.of`
 
-Creates a generic function starting from a function. The new generic function has the same name and arity as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way `Array.of` promotes a single value to an array.
+Creates a generic function starting from a function. The new generic function has the same name and length as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way `Array.of` promotes a single value to an array.
 
 ```javascript
 const Generic = require('mire');
