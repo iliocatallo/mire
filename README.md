@@ -83,7 +83,7 @@ const sum = Generic.of(function sum(x, y) {
 });
 ```
 
-#### `GenericFunction.when` - `GenericFunction.addHandler`
+#### `GenericFunction.when`
 
 A generic function can be extended at any time in order to handle a new combination of argument types. This is achieved by specifying a handler function, together with the related dispatching predicates. Note that an existing handler may get overwritten by new handlers with the same predicates.
 
