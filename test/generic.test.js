@@ -74,7 +74,7 @@ describe('[Generic] Applying a generic function to some arguments', function () 
         const numberHandler = sinon.stub();
         const arrayHandler = sinon.stub();
 
-        const add = Generic.create();
+        const add = Generic.create({length: 2});
         add.when([isNumber, isNumber], numberHandler);
         add.when([isArray, isArray], arrayHandler);
 
@@ -93,6 +93,13 @@ describe('[Generic] Applying a generic function to some arguments', function () 
 
         expect(defaultHandler).to.have.been.calledWith(5, 6);
     });
+
+    it('should accept a variable number of arguments', function () {
+        const add = Generic.create({length: 2});
+        add.when([isNumber, isNumber], function (x, y) { return x + y; });
+
+        expect(add(5, 6, "extra")).to.equal(11);
+    });
 });
 
 describe('[Generic] Extending a generic function', function () {
@@ -100,7 +107,7 @@ describe('[Generic] Extending a generic function', function () {
         const handler1 = sinon.stub();
         const handler2 = sinon.stub();
 
-        const add = Generic.create();
+        const add = Generic.create({length: 2});
 
         add.when([isNumber, isNumber], handler1);
         add.when([isNumber, isNumber], handler2);
