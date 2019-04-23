@@ -13,15 +13,6 @@ const isNumber = x => Number(parseFloat(x)) === x;
 const isArray = xs => Array.isArray(xs);
 
 describe('[Generic] Creating a generic function', function () {
-    it('should be possible by promoting a function', function () {
-        const add = Generic.of(function add(x, y) {
-            return x + y;
-        });
-
-        expect(add.name).to.equal('add');
-        expect(add.length).to.equal(2);
-    });
-
     it('should be possible by specifying its name, length and default handler', function () {
         const add = Generic.create({
             name: 'add',
@@ -66,6 +57,36 @@ describe('[Generic] Creating a generic function', function () {
         expect(add.name).to.equal('');
         expect(add.length).to.equal(0);
         expect(() => add(5, 6)).to.throw(Generic.NoMatchingError);
+    });
+
+    it('should not be possible if the default handler is not a function', function () {
+        expect(() => Generic.create({defaultHandler: true})).to.throw(TypeError);
+        expect(() => Generic.create({defaultHandler: 5})).to.throw(TypeError);
+        expect(() => Generic.create({defaultHandler: 'string'})).to.throw(TypeError);
+        expect(() => Generic.create({defaultHandler: Symbol()})).to.throw(TypeError);
+        expect(() => Generic.create({defaultHandler: {a: 1, b: 2}})).to.throw(TypeError);
+        expect(() => Generic.create({defaultHandler: [1, 2, 3]})).to.throw(TypeError);
+    });
+});
+
+describe('[Generic] Promoting a function to a generic function', function () {
+
+    it('should be possible when the argument is a function', function () {
+        const add = Generic.of(function add(x, y) {
+            return x + y;
+        });
+
+        expect(add.name).to.equal('add');
+        expect(add.length).to.equal(2);
+    });
+
+    it('should not be possible when the argument is not a function', function () {
+        expect(() => Generic.of(true)).to.throw(TypeError);
+        expect(() => Generic.of(5)).to.throw(TypeError);
+        expect(() => Generic.of('string')).to.throw(TypeError);
+        expect(() => Generic.of(Symbol())).to.throw(TypeError);
+        expect(() => Generic.of({a: 1, b: 2})).to.throw(TypeError);
+        expect(() => Generic.of([1, 2, 3])).to.throw(TypeError);
     });
 });
 
