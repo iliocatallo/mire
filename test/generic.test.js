@@ -139,4 +139,20 @@ describe('[Generic] Extending a generic function', function () {
         expect(handler1).to.have.not.been.called;
         expect(handler2).to.have.been.calledWith(5, 6);
     });
+
+    it('should not be possible if the first argument is not an array of predicates of the right length', function () {
+        const add = Generic.create({length: 2});
+
+        expect(() => add.when('not-an-array', (x, y) => x + y)).to.throw(TypeError);
+        expect(() => add.when([isNumber], (x, y) => x + y)).to.throw(TypeError);
+        expect(() => add.when(['not-fn', 'not-fn'], (x, y) => x + y)).to.throw(TypeError);
+        expect(() => add.when(['not-fn', isNumber], (x, y) => x + y)).to.throw(TypeError);
+        expect(() => add.when([isNumber, 'not-fn'], (x, y) => x + y)).to.throw(TypeError);
+    });
+
+    it('should not be possible if the second argument is not a function', function () {
+        const add = Generic.create({length: 2});
+
+        expect(() => add.when([isNumber, isNumber], 'not-a-fn')).to.throw(TypeError);
+    });
 });
