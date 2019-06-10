@@ -1,5 +1,5 @@
-/*jshint node: true, esnext: true */
-/*global describe, before, beforeEach, it */
+/* jshint node: true, esversion: 6 */
+/* global describe, it */
 'use strict';
 
 const chai     = require('chai'),
