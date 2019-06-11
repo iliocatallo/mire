@@ -68,7 +68,11 @@ const sum = Generic.create({name: 'sum'});
 const sum = Generic.create({name: 'sum', length: 2});
 
 // name: 'sum', length: 2, explicit default handler
-const sum = Generic.create({name: 'sum', length: 2, defaultHandler: (x, y) => x + y});
+const sum = Generic.create({
+    name: 'sum',
+    length: 2,
+    defaultHandler: (x, y) => x + y
+});
 ```
 
 #### `Generic.of`
@@ -77,6 +81,7 @@ Creates a generic function starting from a function. The new generic function ha
 
 ```javascript
 const Generic = require('mire');
+
 
 const sum = Generic.of(function sum(x, y) {
     return x + y;
