@@ -68,7 +68,7 @@ const sum = Generic.create({name: 'sum'});
 const sum = Generic.create({name: 'sum', length: 2});
 
 // name: 'sum', length: 2, explicit default handler
-const sum = Generic.create({name: 'sum', length: 2, defaultHandler: (x, y) => x + y})
+const sum = Generic.create({name: 'sum', length: 2, defaultHandler: (x, y) => x + y});
 ```
 
 #### `Generic.of`
