@@ -82,7 +82,7 @@ Creates a generic function starting from a function. The new generic function ha
 ```javascript
 const Generic = require('mire');
 
-
+// name: 'sum', length: 2, explicit default handler
 const sum = Generic.of(function sum(x, y) {
     return x + y;
 });
