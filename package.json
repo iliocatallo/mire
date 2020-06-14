@@ -11,8 +11,14 @@
   },
   "keywords": [
     "multimethods",
+    "methods",
     "generic functions",
+    "generic",
+    "functions",
     "multiple dispatch",
+    "multiple",
+    "dispatch",
+    "ad-hoc",
     "polymorphism"
   ],
   "main": "index.js",
