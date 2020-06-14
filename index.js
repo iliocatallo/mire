@@ -1,4 +1,4 @@
-/*jshint node: true, esnext: true */
+/*jshint node: true, esversion: 6*/
 'use strict';
 
 module.exports = require('./lib/generic');
