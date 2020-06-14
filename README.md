@@ -77,7 +77,7 @@ const sum = Generic.create({
 
 #### `Generic.of`
 
-Creates a generic function starting from a function. The new generic function has the same name and length as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way `Array.of` promotes a single value to an array.
+Creates a generic function starting from a function. The new generic function has the same name and length as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way that `Array.of` promotes a single value to an array.
 
 ```javascript
 const Generic = require('mire');
