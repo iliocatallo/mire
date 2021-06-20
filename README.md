@@ -58,13 +58,13 @@ Creates a generic function by specifying its name, length and default handler. A
 ```javascript
 const Generic = require('mire');
 
-// name: '', length: 0, throwing handler
+// name: '', length: 0, implicit default handler
 const sum = Generic.create();
 
-// name: 'sum', length: 0, throwing handler
+// name: 'sum', length: 0, implicit default handler
 const sum = Generic.create({name: 'sum'});
 
-// name: 'sum', length: 2, throwing handler
+// name: 'sum', length: 2, implicit default handler
 const sum = Generic.create({name: 'sum', length: 2});
 
 // name: 'sum', length: 2, explicit default handler
