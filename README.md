@@ -107,7 +107,7 @@ sum.when([isArray, isArray], function sumArrays(xs, ys) {
 
 #### `Generic.NoMatchingError`
 
-When no fallback handler is passed to `Generic.create`, Mire defaults to a fallback handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the arguments that did not match.
+When no fallback handler is passed to `Generic.create`, Mire defaults to a fallback handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the passed arguments.
 
 ```javascript
 const Generic = require('mire');
