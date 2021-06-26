@@ -10,11 +10,11 @@ const isNumber = x => Number(parseFloat(x)) === x;
 const isArray = xs => Array.isArray(xs);
 
 describe('[Generic] Creating a generic function', function () {
-    it('is possible by specifying its name, length and default handler', function () {
+    it('is possible by specifying its name, length and fallback handler', function () {
         const sum = Generic.create({
             name: 'sum',
             length: 2,
-            defaultHandler: (x, y) => x + y
+            fallback: (x, y) => x + y
         });
 
         expect(sum.name).to.equal('sum');
@@ -24,7 +24,7 @@ describe('[Generic] Creating a generic function', function () {
     it('is possible also when no name has been specified', function () {
         const sum = Generic.create({
             length: 2,
-            defaultHandler: (x, y) => x + y
+            fallback: (x, y) => x + y
         });
 
         expect(sum.name).to.equal('');
@@ -33,13 +33,13 @@ describe('[Generic] Creating a generic function', function () {
     it('is possible also when no length has been specified', function () {
         const sum = Generic.create({
             name: 'sum',
-            defaultHandler: (x, y) => x + y
+            fallback: (x, y) => x + y
         });
 
         expect(sum.length).to.equal(0);
     });
 
-    it('is possible also when no default handler has been specified', function () {
+    it('is possible also when no fallback handler has been specified', function () {
         const sum = Generic.create({
             name: 'sum',
             length: 2
@@ -56,13 +56,13 @@ describe('[Generic] Creating a generic function', function () {
         expect(() => sum(5, 6)).to.throw(Generic.NoMatchingError);
     });
 
-    it('is not possible if the default handler is not a function', function () {
-        expect(() => Generic.create({defaultHandler: true})).to.throw(TypeError);
-        expect(() => Generic.create({defaultHandler: 5})).to.throw(TypeError);
-        expect(() => Generic.create({defaultHandler: 'string'})).to.throw(TypeError);
-        expect(() => Generic.create({defaultHandler: Symbol()})).to.throw(TypeError);
-        expect(() => Generic.create({defaultHandler: {a: 1, b: 2}})).to.throw(TypeError);
-        expect(() => Generic.create({defaultHandler: [1, 2, 3]})).to.throw(TypeError);
+    it('is not possible if the fallback handler is not a function', function () {
+        expect(() => Generic.create({fallback: true})).to.throw(TypeError);
+        expect(() => Generic.create({fallback: 5})).to.throw(TypeError);
+        expect(() => Generic.create({fallback: 'string'})).to.throw(TypeError);
+        expect(() => Generic.create({fallback: Symbol()})).to.throw(TypeError);
+        expect(() => Generic.create({fallback: {a: 1, b: 2}})).to.throw(TypeError);
+        expect(() => Generic.create({fallback: [1, 2, 3]})).to.throw(TypeError);
     });
 });
 
@@ -102,9 +102,9 @@ describe('[Generic] Applying a generic function to some arguments', function () 
         expect(arrayResult).to.deep.equal([10, 6])
     });
 
-    it('falls back to the default handler when arguments do not match', function () {
+    it('defaults to the fallback handler when arguments do not match', function () {
         const sum = Generic.create({
-            defaultHandler: (x, y) => x + y
+            fallback: (x, y) => x + y
         });
 
         const numberResult = sum(5, 6);

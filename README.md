@@ -53,25 +53,25 @@ npm install mire
 
 #### `Generic.create`
 
-Creates a generic function by specifying its name, length and default handler. All parameters are optional. In the absence of a specific indication, the new generic function falls back to a default handler that always throws a `NoMatchingError`.
+Creates a generic function by specifying its name, length and fallback handler. All parameters are optional. In the absence of a specific indication, the new generic function defaults to a fallback handler that always throws a `NoMatchingError`.
 
 ```javascript
 const Generic = require('mire');
 
-// name: '', length: 0, implicit default handler
+// name: '', length: 0, default fallback
 const sum = Generic.create();
 
-// name: 'sum', length: 0, implicit default handler
+// name: 'sum', length: 0, default fallback
 const sum = Generic.create({name: 'sum'});
 
-// name: 'sum', length: 2, implicit default handler
+// name: 'sum', length: 2, default fallback
 const sum = Generic.create({name: 'sum', length: 2});
 
-// name: 'sum', length: 2, explicit default handler
+// name: 'sum', length: 2, user-defined fallback
 const sum = Generic.create({
     name: 'sum',
     length: 2,
-    defaultHandler: (x, y) => x + y
+    fallback: (x, y) => x + y
 });
 ```
 
@@ -82,7 +82,7 @@ Creates a generic function starting from a function. The new generic function ha
 ```javascript
 const Generic = require('mire');
 
-// name: 'sum', length: 2, explicit default handler
+// name: 'sum', length: 2, input function as the fallback
 const sum = Generic.of(function sum(x, y) {
     return x + y;
 });
@@ -107,7 +107,7 @@ sum.when([isArray, isArray], function sumArrays(xs, ys) {
 
 #### `Generic.NoMatchingError`
 
-When no default handler is passed to `Generic.create`, Mire falls back to a default handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the arguments that did not match.
+When no fallback handler is passed to `Generic.create`, Mire defaults to a fallback handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the arguments that did not match.
 
 ```javascript
 const Generic = require('mire');
