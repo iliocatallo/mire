@@ -3,64 +3,50 @@
 'use strict';
 
 const chai     = require('chai'),
-      sinon    = require('sinon'),
       Trie     = require('../lib/trie'),
       {expect} = chai;
 
-chai.use(require('sinon-chai'));
-
 describe('[Trie] Getting a value', function () {
 
-    it('should succeed if the value exists and the input features match', function () {
-        const pred1 = sinon.stub().returns(true);
-        const pred2 = sinon.stub().returns(true);
-
+    it('succeeds if the value exists and the input features match', function () {
         const trie = new Trie();
+        const pred1 = a => a === 'feature1';
+        const pred2 = b => b === 'feature2';
+
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        /*jshint -W030 */
         expect(trie.getValue(['feature1', 'feature2'])).to.equal('pred1-pred2-value');
-        expect(pred1).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledAfter(pred1);
     });
 
-    it('should result in undefined if the value does not exist', function () {
-        const pred1 = sinon.stub().returns(true);
-        const pred2 = sinon.stub().returns(true);
-
+    it('results in undefined if the value does not exist', function () {
         const trie = new Trie();
+        const pred1 = a => a === 'feature1';
+        const pred2 = b => b === 'feature2';
+
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        /*jshint -W030 */
+        expect(trie.getValue(['feature1'])).to.be.undefined;
         expect(trie.getValue(['feature1', 'feature2', 'feature3'])).to.be.undefined;
-        expect(pred1).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledAfter(pred1);
     });
 
-    it('should result in undefined if the input features are not satisfied', function () {
-        const pred1 = sinon.stub().returns(true);
-        const pred2 = sinon.stub().returns(false);
-
+    it('results in undefined if the input features are not satisfied', function () {
         const trie = new Trie();
+        const pred1 = a => true
+        const pred2 = b => false
+
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        /*jshint -W030 */
         expect(trie.getValue(['feature1', 'feature2'])).to.be.undefined;
-        expect(pred1).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledOnce;
-        expect(pred2).to.have.been.calledAfter(pred1);
     });
 });
 
 describe('[Trie] Setting a value', function () {
 
-    it('should override previous values associated with the same predicates', function () {
-        const pred1 = sinon.stub().returns(true);
-        const pred2 = sinon.stub().returns(true);
-
+    it('overrides previous values associated with the same predicates', function () {
         const trie = new Trie();
+        const pred1 = a => a === 'feature1';
+        const pred2 = b => b === 'feature2';
+
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
         trie.setValue([pred1, pred2], 'new-pred1-pred2-value');
 
