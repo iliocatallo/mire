@@ -2,9 +2,8 @@
 /* global describe, it */
 'use strict';
 
-const chai     = require('chai'),
-      Trie     = require('../lib/trie'),
-      {expect} = chai;
+const assert   = require('assert').strict,
+      Trie     = require('../lib/trie');
 
 describe('[Trie] Getting a value', function () {
 
@@ -15,7 +14,7 @@ describe('[Trie] Getting a value', function () {
 
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        expect(trie.getValue(['feature1', 'feature2'])).to.equal('pred1-pred2-value');
+        assert.equal(trie.getValue(['feature1', 'feature2']), 'pred1-pred2-value');
     });
 
     it('results in undefined if the value does not exist', function () {
@@ -25,8 +24,8 @@ describe('[Trie] Getting a value', function () {
 
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        expect(trie.getValue(['feature1'])).to.be.undefined;
-        expect(trie.getValue(['feature1', 'feature2', 'feature3'])).to.be.undefined;
+        assert.equal(trie.getValue(['feature1']), undefined);
+        assert.equal(trie.getValue(['feature1', 'feature2', 'feature3']), undefined);
     });
 
     it('results in undefined if the input features are not satisfied', function () {
@@ -36,7 +35,7 @@ describe('[Trie] Getting a value', function () {
 
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
 
-        expect(trie.getValue(['feature1', 'feature2'])).to.be.undefined;
+        assert.equal(trie.getValue(['feature1', 'feature2']), undefined);
     });
 });
 
@@ -50,6 +49,6 @@ describe('[Trie] Setting a value', function () {
         trie.setValue([pred1, pred2], 'pred1-pred2-value');
         trie.setValue([pred1, pred2], 'new-pred1-pred2-value');
 
-        expect(trie.getValue(['feature1', 'feature2'])).to.equal('new-pred1-pred2-value');
+        assert.equal(trie.getValue(['feature1', 'feature2']), 'new-pred1-pred2-value');
     });
 });
