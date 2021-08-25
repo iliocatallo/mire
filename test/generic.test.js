@@ -67,7 +67,7 @@ describe('[Generic] Creating a generic function', function () {
 
 describe('[Generic] Promoting a function to a generic function', function () {
 
-    it('is possible when the argument is indeed a function', function () {
+    it('is possible when the argument is a function', function () {
         const sum = Generic.of(function sum(x, y) {
             return x + y;
         });
@@ -126,7 +126,7 @@ describe('[Generic] Applying a generic function to some arguments', function () 
 });
 
 describe('[Generic] Extending a generic function', function () {
-    it('overrides least-recent handlers with the same predicates', function () {
+    it('overrides the possible handler associated with the same predicates', function () {
         const sum = Generic.create({
             length: 1
         });
