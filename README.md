@@ -4,13 +4,13 @@
 
 <div align="center">
   <a href="https://travis-ci.org/iliocatallo/mire">
-    <img src="https://travis-ci.org/iliocatallo/mire.svg?branch=master" alt="Travis CI"/>
+    <img alt="Build status" src="https://travis-ci.org/iliocatallo/mire.svg?branch=master"/>
   </a>
   <a href="https://coveralls.io/github/iliocatallo/mire">
-    <img src="https://coveralls.io/repos/github/iliocatallo/mire/badge.svg?branch=master" alt="Coverage"/>
+    <img alt="Coverage" src="https://coveralls.io/repos/github/iliocatallo/mire/badge.svg?branch=master"/>
   </a>
-  <a href="https://david-dm.org/iliocatallo/mire" title="Dependencies status">
-    <img src="https://david-dm.org/iliocatallo/mire/status.svg"/>
+  <a href="https://david-dm.org/iliocatallo/mire">
+    <img alt="Dependencies" src="https://david-dm.org/iliocatallo/mire/status.svg"/>
   </a>
 </div>
 
