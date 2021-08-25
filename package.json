@@ -27,13 +27,11 @@
   },
   "scripts": {
     "test": "nyc --reporter=lcov --reporter=text mocha --recursive --reporter spec",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "jsdoc": "jsdoc -r -c jsdoc.json"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
-    "jsdoc": "^3.6.4",
     "mocha": "^8.0.1",
     "nyc": "^15.1.0"
   }
