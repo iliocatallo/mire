@@ -7,13 +7,20 @@ node_js:
 - '14'
 - '15'
 - '16'
+
 after_success: npm run coveralls
-deploy:
-  provider: npm
-  email: info@iliocatallo.it
-  api_key:
-    secure: tgeq0SecCFXzE1UVIteWa1hm0MH5KhgB3OmmpGumXoHNZS0TDFPYn2ajCQ78z7UD9ZgUhnZBoC8a/tG+phmeghbIJWuxjwAStMAKqdVbFE+lYmAAslRlXpWUiSsoonW7Nd7t+rkHfi7hoPwcNHwcTl81G/uJwE50AI0URjAhupeUIs0LsoMmrd3+o2B63lDoAZS/VP/9Lmtq+q3Z0jpSPiqdC/F5TkBFKng9OFYWUHPb/SQdKtkLKXNrF7INz+mWCWP9B8CdUuqjd/JHKJUqYmw/tUp+xxINoM/w1fNgy/K1LTjPyl04oluYzIDu/+gvEUfJm98IvEFp560urBSWoiz/OUPXRBKt1i7zOLzPD4U5MqgEmT41ZIfmOSxVdeoaGUGDAq+cb0YlGwnCsAPnQRC3tPHE95/rDqAHTt7A+QfM0LzItrFVL+5HG7SeLrgZTV/jmHCjEnRaFsLkgDRP51vl/GsjHkgSfTiuZtJJn2D/ePcgu7XnWD64Qx9q8xaAroznkJBupgq3QiMr7lsA+4tjEETLk3Ax4FP9HvMD0pOmCnGN5VKE+W0fPJeu7gDKzPppdv6ADgdpLfbs0IkjeO4Ox06oSHS0Q52Reb/yrBh0cIrI4oajn0sx6dYwkLF4Hm/vLcRoZLULeUVCKdw264vR5bORlydmJ+z2/qjUJtw=
-  on:
-    tags: true
-    node_js: lts/*
-    repo: iliocatallo/mire
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      # https://github.com/travis-ci/travis-ci/issues/8337#issuecomment-326838809
+      after_success: echo "skipped"
+      deploy:
+        provider: npm
+        email: info@iliocatallo.it
+        api_key:
+          secure: tgeq0SecCFXzE1UVIteWa1hm0MH5KhgB3OmmpGumXoHNZS0TDFPYn2ajCQ78z7UD9ZgUhnZBoC8a/tG+phmeghbIJWuxjwAStMAKqdVbFE+lYmAAslRlXpWUiSsoonW7Nd7t+rkHfi7hoPwcNHwcTl81G/uJwE50AI0URjAhupeUIs0LsoMmrd3+o2B63lDoAZS/VP/9Lmtq+q3Z0jpSPiqdC/F5TkBFKng9OFYWUHPb/SQdKtkLKXNrF7INz+mWCWP9B8CdUuqjd/JHKJUqYmw/tUp+xxINoM/w1fNgy/K1LTjPyl04oluYzIDu/+gvEUfJm98IvEFp560urBSWoiz/OUPXRBKt1i7zOLzPD4U5MqgEmT41ZIfmOSxVdeoaGUGDAq+cb0YlGwnCsAPnQRC3tPHE95/rDqAHTt7A+QfM0LzItrFVL+5HG7SeLrgZTV/jmHCjEnRaFsLkgDRP51vl/GsjHkgSfTiuZtJJn2D/ePcgu7XnWD64Qx9q8xaAroznkJBupgq3QiMr7lsA+4tjEETLk3Ax4FP9HvMD0pOmCnGN5VKE+W0fPJeu7gDKzPppdv6ADgdpLfbs0IkjeO4Ox06oSHS0Q52Reb/yrBh0cIrI4oajn0sx6dYwkLF4Hm/vLcRoZLULeUVCKdw264vR5bORlydmJ+z2/qjUJtw=
+        on:
+          tags: true
+          repo: iliocatallo/mire
