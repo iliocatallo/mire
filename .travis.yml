@@ -14,8 +14,8 @@ jobs:
   include:
     - stage: release
       node_js: lts/*
-      # https://github.com/travis-ci/travis-ci/issues/8337#issuecomment-326838809
-      after_success: echo "skipped"
+      script: skip # do not rerun tests
+      after_success: echo "skipped" # do not rerun coverage (https://github.com/travis-ci/travis-ci/issues/8337#issuecomment-326838809)
       deploy:
         provider: npm
         email: info@iliocatallo.it
