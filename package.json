@@ -26,12 +26,12 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov --reporter=text mocha --recursive --reporter spec",
+    "test": "nyc --reporter=lcov --reporter=text uvu test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
-    "mocha": "^8.0.1",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "uvu": "^0.5.3"
   }
 }
