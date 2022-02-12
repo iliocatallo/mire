@@ -9,8 +9,8 @@
   <a href="https://coveralls.io/github/iliocatallo/mire">
     <img alt="Coverage" src="https://coveralls.io/repos/github/iliocatallo/mire/badge.svg?branch=master"/>
   </a>
-  <a href="https://david-dm.org/iliocatallo/mire">
-    <img alt="Dependencies" src="https://david-dm.org/iliocatallo/mire/status.svg"/>
+  <a href="https://bundlephobia.com/package/mire">
+    <img alt="Dependencies" src="https://badgen.net/bundlephobia/dependency-count/mire"/>
   </a>
 </div>
 
