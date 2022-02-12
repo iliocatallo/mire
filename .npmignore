@@ -4,8 +4,5 @@ coverage
 out
 .nyc_output
 
-#documentation
-jsdoc.json
-
 #build tools
 .travis.yml
