@@ -8,8 +8,6 @@ node_js:
 - '15'
 - '16'
 
-after_success: npm run coveralls
-
 jobs:
   include:
     - stage: release
