@@ -3,8 +3,8 @@
 </div>
 
 <div align="center">
-  <a href="https://travis-ci.org/iliocatallo/mire">
-    <img alt="Build status" src="https://travis-ci.org/iliocatallo/mire.svg?branch=master"/>
+  <a href="https://github.com/iliocatallo/mire/actions/workflows/ci.yml">
+    <img alt="Build status" src="https://github.com/iliocatallo/mire/actions/workflows/ci.yml/badge.svg"/>
   </a>
   <a href="https://coveralls.io/github/iliocatallo/mire">
     <img alt="Coverage" src="https://coveralls.io/repos/github/iliocatallo/mire/badge.svg?branch=master"/>
