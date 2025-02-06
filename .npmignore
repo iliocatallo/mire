@@ -7,5 +7,6 @@ out
 #build tools
 .github
 
-# vscode
+# dev env
 .vscode
+pkgx.yaml
