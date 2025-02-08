@@ -20,8 +20,9 @@
 Mire is a JavaScript library for the creation of _generic functions_, that is, functions capable of handling different types of data. Mire functionalities are exposed via a `Generic` object, which mimics the look and feel of standard JavaScript global objects, such as `Array`. Once created, a generic function can be extended so as to handle arguments of disparate types.
 
 ```javascript
-const Generic = require('mire'),
-      isArray = Array.isArray;
+import Generic from 'mire';
+
+const { isArray } = Array;
 
 const sum = Generic.of(function sum(x, y) {
     return x + y;
@@ -50,7 +51,7 @@ npm install mire
 Creates a generic function by specifying its name, length and fallback handler. All parameters are optional. In the absence of a specific indication, the new generic function defaults to a fallback handler that always throws a `NoMatchingError`.
 
 ```javascript
-const Generic = require('mire');
+import Generic from 'mire';
 
 // name: '', length: 0, default fallback
 const sum = Generic.create();
@@ -74,7 +75,7 @@ const sum = Generic.create({
 Creates a generic function starting from a function. The new generic function has the same name and length as the input function. In other words, `Generic.of` promotes a function to a generic function in the same way that `Array.of` promotes a single value to an array.
 
 ```javascript
-const Generic = require('mire');
+import Generic from 'mire';
 
 // name: 'sum', length: 2, input function as the fallback
 const sum = Generic.of(function sum(x, y) {
@@ -87,8 +88,9 @@ const sum = Generic.of(function sum(x, y) {
 A generic function can be extended at any time in order to handle a new combination of argument types. This is achieved by specifying a handler function, together with the related dispatching predicates. Note that an existing handler may get overwritten by new handlers with the same predicates.
 
 ```javascript
-const Generic = require('mire'),
-      isArray = Array.isArray;
+import Generic from 'mire';
+
+const { isArray } = Array;
 
 const sum = Generic.of(function sum(x, y) {
     return x + y;
@@ -104,7 +106,7 @@ sum.when([isArray, isArray], function sumArrays(xs, ys) {
 When no fallback handler is passed to `Generic.create`, Mire defaults to a fallback handler that always throws a `NoMatchingError` error. Errors of such a type expose a `generic` property that points to the generic function at hand, as well as an `args` property, containing the passed arguments.
 
 ```javascript
-const Generic = require('mire');
+import Generic from 'mire';
 
 const sum = Generic.create();
 try {
