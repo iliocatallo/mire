@@ -9,4 +9,4 @@ out
 
 # dev env
 .vscode
-pkgx.yaml
+mise.toml
