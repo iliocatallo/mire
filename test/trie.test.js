@@ -1,8 +1,8 @@
 /* jshint node: true, esversion: 6 */
 'use strict';
 
-const {test} = require('uvu'),
-      assert = require('uvu/assert'),
+const test   = require('node:test'),
+      assert = require('node:assert/strict'),
       Trie   = require('../lib/trie');
 
 test('Getting a value succeeds if the value exists and the input features match', function () {
@@ -46,5 +46,3 @@ test('Setting a value overrides previous values associated with the same predica
 
     assert.equal(trie.getValue(['feature1', 'feature2']), 'new-pred1-pred2-value');
 });
-
-test.run();

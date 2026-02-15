@@ -1,8 +1,8 @@
 /* jshint node: true, esversion: 6 */
 'use strict';
 
-const {test}    = require('uvu'),
-      assert    = require('uvu/assert'),
+const test      = require('node:test'),
+      assert    = require('node:assert/strict'),
       Generic   = require('../lib/generic');
 
 const isNumber = x => Number(parseFloat(x)) === x;
@@ -92,7 +92,7 @@ test('Applying a generic function to some arguments is delegated to a matching h
     const arrayResult = sum([7, 2], [3, 4]);
 
     assert.equal(numberResult, 11);
-    assert.equal(arrayResult, [10, 6]);
+    assert.deepEqual(arrayResult, [10, 6]);
 });
 
 test('Applying a generic function to some arguments defaults to the fallback handler when arguments do not match', function () {
@@ -150,5 +150,3 @@ test('Extending a generic function is not possible if the second argument is not
 
     assert.throws(() => sum.when([isNumber, isNumber], 'not-a-fn'), err => err instanceof TypeError);
 });
-
-test.run();
